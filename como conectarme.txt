@@ -1,0 +1,2 @@
+coputadora  http://127.0.0.1:5000: Solo funciona en tu computador local.
+teléfono  http://192.168.0.49:5000: Esta es la URL que debes usar en otros dispositivos conectados a la misma red WiFi, como tu celular.
