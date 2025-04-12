@@ -2,7 +2,6 @@ import os
 from flask import Flask, request, render_template_string
 from openai import OpenAI
 
-# Usa tu variable de entorno para inicializar el cliente
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 app = Flask(__name__)
