@@ -1,0 +1,3 @@
+ OPCIÓN AVANZADA — Limitar el modelo a responder siempre con mínimo 500 tokens
+Si quieres, también puedo enseñarte a definir un parámetro llamado max_tokens y temperature, para tener más control. Pero eso lo dejamos para una etapa más profesional si tú lo deseas.
+
