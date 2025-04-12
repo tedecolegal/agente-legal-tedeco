@@ -2,7 +2,7 @@ import os
 from flask import Flask, request, render_template_string
 from openai import OpenAI
 
-# Inicializa el cliente de OpenAI con la API Key del entorno
+# Usa el cliente oficial de OpenAI
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 app = Flask(__name__)
@@ -83,17 +83,14 @@ def home():
     respuesta = ""
     if request.method == "POST":
         pregunta = request.form["pregunta"]
-        try:
-            completion = client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": "Eres un asesor legal experto en Ecuador en IESS, seguros y derechos de los ciudadanos. Responde con precisión, empatía y profesionalismo."},
-                    {"role": "user", "content": pregunta}
-                ]
-            )
-            respuesta = completion.choices[0].message.content
-        except Exception as e:
-            respuesta = f"Ocurrió un error al consultar OpenAI: {str(e)}"
+        completion = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "Eres un asesor legal experto en Ecuador en IESS, seguros y derechos de los ciudadanos. Responde con precisión, empatía y profesionalismo."},
+                {"role": "user", "content": pregunta}
+            ]
+        )
+        respuesta = completion.choices[0].message.content
     return render_template_string(HTML, respuesta=respuesta)
 
 if __name__ == '__main__':
