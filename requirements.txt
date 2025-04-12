@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 flask
 openai>=1.6.1
 
 
+=======
+flask==3.0.0
+openai==1.14.2
+>>>>>>> ab02321135ecb4cb0bbddd7ffe686570e598278d
 

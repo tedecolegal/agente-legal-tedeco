@@ -2,8 +2,13 @@ import os
 from flask import Flask, request, render_template_string
 from openai import OpenAI
 
+<<<<<<< HEAD
 # Crear cliente OpenAI con tu clave desde variable de entorno
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+=======
+# Crear el cliente OpenAI de forma correcta
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+>>>>>>> ab02321135ecb4cb0bbddd7ffe686570e598278d
 
 app = Flask(__name__)
 
@@ -83,6 +88,7 @@ def home():
     respuesta = ""
     if request.method == "POST":
         pregunta = request.form["pregunta"]
+<<<<<<< HEAD
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -99,3 +105,17 @@ def home():
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
     
+=======
+        completion = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "Eres un asesor legal experto en Ecuador en IESS, seguros y derechos de los ciudadanos. Responde con precisión, empatía y profesionalismo."},
+                {"role": "user", "content": pregunta}
+            ]
+        )
+        respuesta = completion.choices[0].message.content
+    return render_template_string(HTML, respuesta=respuesta)
+
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
+>>>>>>> ab02321135ecb4cb0bbddd7ffe686570e598278d
