@@ -1,7 +1,10 @@
 flask
 openai
-python-dotenv
+langchain
+langchain-community
+tiktoken
 chromadb
+
 
 
 
