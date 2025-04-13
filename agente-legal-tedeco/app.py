@@ -2,7 +2,7 @@ import os
 from flask import Flask, request, render_template_string
 from openai import OpenAI
 
-# Usa el cliente oficial de OpenAI
+# Inicializa el cliente moderno de OpenAI sin proxies
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 app = Flask(__name__)
